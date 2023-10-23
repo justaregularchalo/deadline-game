@@ -7,8 +7,12 @@ class Meme {
 
     this.w = 35;
     this.h = 35;
-    this.x = 700;
+    this.x = Math.random()*700;
     this.y = 0;
+
+    this.marginLeft = 400;
+    this.marginRight = 780;
+
 
 
 
@@ -22,7 +26,17 @@ class Meme {
   }
 
   fallingMovement = () => {
+    
     this.y += this.speed;
     this.node.style.top = `${this.y}px`;
-  };
+
+
+    if (this.x <= this.marginLeft) {
+        this.x = this.marginLeft;
+    } else if (this.x >= this.marginRight) {
+        this.x = this.marginRight;
+    }
+
+    this.node.style.left = `${this.x}px`;
+};
 }

@@ -11,6 +11,7 @@ class Game {
     this.briefArray = [];
 
     this.score = new Score();
+
     this.timer = 0;
     this.delayMeme = 240;
     this.delayCoffee = 180;
@@ -26,7 +27,7 @@ class Game {
   };
 
   coffeeSpawn = () => {
-    if (this.timer % 120 === 0) {
+    if (this.timer % 350 === 0) {
       let newCoffee = new Coffee();
       this.coffeeArray.push(newCoffee);
     }
@@ -44,10 +45,6 @@ class Game {
   gameLoop = () => {
     this.hero.gravityEffect();
 
-    this.briefArray.forEach((eachBrief) => {
-      eachBrief.throwingMovement();
-    });
-
     this.memeArray.forEach((eachMeme) => {
       eachMeme.fallingMovement();
     });
@@ -56,11 +53,15 @@ class Game {
       eachCoffee.fallingMovement();
     });
 
+    this.briefArray.forEach((eachBrief) => {
+      eachBrief.throwingMovement();
+    });
+
     if (this.timer > this.delayMeme) {
       this.memeSpawn();
-    } else if (this.timer > this.delayCoffee) {
+    } if (this.timer > this.delayCoffee) {
       this.coffeeSpawn();
-    }
+    } 
 
     // this.hero.resetPosition();
 

@@ -25,8 +25,8 @@ class Hero {
 
     this.inAir = false;
 
-    this.marginLeft =300;
-    this.marginRight = 688;
+    this.marginLeft =372;
+    this.marginRight = 690;
   }
 
   moveLeft = () => {
