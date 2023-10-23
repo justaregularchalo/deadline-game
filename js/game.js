@@ -61,11 +61,23 @@ class Game {
         eachBrief.y < this.hero.y + this.hero.h &&
         eachBrief.y + eachBrief.h > this.hero.y
       ) {
-        this.damage
+        this.damage;
+        this.briefArray.shift()
       } 
 
     })
 
+
+  }
+
+
+
+  briefScreenDissapear = ()=> {
+
+    if(this.briefArray[0].x > 800) {
+
+      this.briefArray.shift()
+    }
 
   }
 
@@ -106,8 +118,10 @@ class Game {
     this.briefSpawn();
 
 
-    this. collisionHeroVsBrief ()
-    
+    this. collisionHeroVsBrief();
+
+
+    this.briefScreenDissapear(); 
 
     
     //esta es la recursión
