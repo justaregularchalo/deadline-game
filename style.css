@@ -34,6 +34,17 @@ body {
   background-repeat: no-repeat;
 }
 
+#game-box p{
+
+  font-family: 'Bungee Spice', sans-serif;
+  font-size: xx-large;
+  position:relative;
+  left: 150px; ;
+  top: 10px;
+
+
+}
+
 #game-screen,
 #gameover-screen {
   display: none;

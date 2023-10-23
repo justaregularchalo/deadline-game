@@ -15,6 +15,14 @@ class Game {
     this.timer = 0;
     this.delayMeme = 240;
     this.delayCoffee = 180;
+
+    this.damage = this.score - 5;
+
+    this.GameOn = this.score >= 0;
+
+    
+
+
   }
 
   // métodos
@@ -36,11 +44,43 @@ class Game {
 
 
   briefSpawn = () => {
-    if (this.timer % 60 === 0) {
+    if (this.timer % 120 === 0) {
       let newBrief = new Brief();
       this.briefArray.push(newBrief);
     }
   };
+
+
+  collisionHeroVsBrief = () => {
+
+    this.briefArray.forEach((eachBrief) => {
+
+      if (
+        eachBrief.x < this.hero.x + this.hero.w &&
+        eachBrief.x + eachBrief.w > this.hero.x &&
+        eachBrief.y < this.hero.y + this.hero.h &&
+        eachBrief.y + eachBrief.h > this.hero.y
+      ) {
+        this.damage
+      } 
+
+    })
+
+
+  }
+
+  gameOver () {
+
+      this.isGameOn < 0;
+
+
+
+
+
+  } 
+
+
+
 
   gameLoop = () => {
     this.hero.gravityEffect();
@@ -63,11 +103,19 @@ class Game {
       this.coffeeSpawn();
     } 
 
-    // this.hero.resetPosition();
+    this.briefSpawn();
 
-    // console.log("ejecutando gameLoop")
+
+    this. collisionHeroVsBrief ()
+    
+
+    
     //esta es la recursión
     this.timer++;
-    requestAnimationFrame(this.gameLoop);
+
+    // if (this.GameOn === true) {
+      requestAnimationFrame(this.gameLoop);
+    
+   
   };
 }

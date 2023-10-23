@@ -7,7 +7,10 @@ class Brief {
     this.w = 35;
     this.h = 35;
     this.x = 75;
-    this.y = 295;
+    this.y = 300 + Math.random() * 50; 
+
+    this.marginTop = 300; 
+    this.marginBottom = 400; 
 
     this.node.style.width = `${this.w}px`;
     this.node.style.height = `${this.h}px`;
@@ -21,5 +24,12 @@ class Brief {
   throwingMovement = () => {
     this.x += this.speed;
     this.node.style.left = `${this.x}px`;
+
+    if (this.y <= this.marginTop) {
+      this.y = this.marginTop;
+    } else if (this.y >= this.marginBottom) {
+      this.y = this.marginBottom;
+    }
+    this.node.style.top = `${this.y}px`;
   };
 }
