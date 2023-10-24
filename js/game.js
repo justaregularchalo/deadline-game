@@ -11,20 +11,17 @@ class Game {
 
     // this.score = new Score();
     // this.scoreRealTime =document.querySelector("#score-display");
-  
-    
+
     this.score = 0;
-  
-    this.damage = 5;
+
+    this.damage = -5;
     this.bonus = 5;
 
     this.timer = 0;
     this.delayMeme = 240;
     this.delayCoffee = 180;
 
-   
-
-    this.GameOn = this.score >0;
+    this.GameOn = this.score > 0;
   }
 
   // métodos
@@ -44,7 +41,7 @@ class Game {
         eachMeme.y < this.hero.y + this.hero.h &&
         eachMeme.y + eachMeme.h > this.hero.y
       ) {
-        this.score += this.bonus;;
+        this.score += this.bonus;
         console.log("bonus meme sumando");
         this.memeArray[0].node.remove();
         this.memeArray.shift();
@@ -60,8 +57,6 @@ class Game {
       }
     }
   };
-
-
 
   coffeeSpawn = () => {
     if (this.timer % 350 === 0) {
@@ -110,7 +105,7 @@ class Game {
         eachBrief.y < this.hero.y + this.hero.h &&
         eachBrief.y + eachBrief.h > this.hero.y
       ) {
-        this.score -= this.damage;
+        this.score += this.damage;
         console.log("daño brief");
         this.briefArray[0].node.remove();
         this.briefArray.shift();
@@ -127,92 +122,61 @@ class Game {
     }
   };
 
-
   updateScore() {
-    const scoreElement = document.querySelector('#score');
+    const scoreElement = document.querySelector("#score");
     scoreElement.innerText = this.score;
   }
 
+  gameOver = () => {
+    if (this.score < 0) {
+      gameScreenNode.style.display = "none";
+      gameOverBoxNode.style.display = "flex";
+    }
+    return this.score < 0;
+  };
 
+  
 
-gameOver = () => {
+  gameLoop = () => {
+    this.hero.gravityEffect();
 
-  if (this.score < 0) {
-    gameScreenNode.style.display = "none";
-    gameOverBoxNode.style.display = "flex";
-  }
-  return this.score < 0;
+    this.memeArray.forEach((eachMeme) => {
+      eachMeme.fallingMovement();
+    });
 
+    this.coffeeArray.forEach((eachCoffee) => {
+      eachCoffee.fallingMovement();
+    });
 
+    this.briefArray.forEach((eachBrief) => {
+      eachBrief.throwingMovement();
+    });
 
+    if (this.timer > this.delayMeme) {
+      this.memeSpawn();
+    }
+    if (this.timer > this.delayCoffee) {
+      this.coffeeSpawn();
+    }
+
+    this.collisionHeroVsMeme();
+    this.memeScreenDissapear();
+
+    this.collisionHeroVsCoffee();
+    this.coffeeScreenDissapear();
+
+    this.briefSpawn();
+
+    this.collisionHeroVsBrief();
+
+    this.briefScreenDissapear();
+
+    //esta es la recursión
+    this.timer++;
+
+    if (this.gameOver()) {
+      return;
+    }
+    requestAnimationFrame(this.gameLoop);
+  };
 }
-  
-
-
-gameLoop = () => {
-  this.hero.gravityEffect();
-
-  this.memeArray.forEach((eachMeme) => {
-    eachMeme.fallingMovement();
-  });
-
-  this.coffeeArray.forEach((eachCoffee) => {
-    eachCoffee.fallingMovement();
-  });
-
-  this.briefArray.forEach((eachBrief) => {
-    eachBrief.throwingMovement();
-  });
-
-  if (this.timer > this.delayMeme) {
-    this.memeSpawn();
-  }
-  if (this.timer > this.delayCoffee) {
-    this.coffeeSpawn();
-  }
-  
-
-
-
-
-
-
-  this. collisionHeroVsMeme();
-  this.memeScreenDissapear ()
-
-
-  this.collisionHeroVsCoffee();
-  this.coffeeScreenDissapear();
-
-  this.briefSpawn();
-
-  this.collisionHeroVsBrief();
-
-  this.briefScreenDissapear();
-
-
-
-
-
-  //esta es la recursión
-  this.timer++;
-
-  if (this.gameOver()) {
-    
-    return;
-  }
-  requestAnimationFrame(this.gameLoop);
-
-};
-
-
-
-
-}
-
-
-
-  
-
-  
-

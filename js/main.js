@@ -10,6 +10,8 @@ let gameBoxNode = document.querySelector("#game-box");
 
 let scoreScreenNode = document.querySelector("#score-display");
 
+let restartBtnNode =document.querySelector("#restart-btn");
+
 let gameOverBoxNode = document.querySelector("#gameover-screen");
 
 let gameObject;
@@ -44,6 +46,11 @@ document.addEventListener("keydown", (event) => {
   if (event.code === "ArrowRight") {
     gameObject.hero.moveRight();
   }
+
+
+  restartBtnNode.addEventListener("click", startGame);
+
+
 });
 
 

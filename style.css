@@ -48,4 +48,18 @@ body {
 #game-screen,
 #gameover-screen {
   display: none;
+
+
+
+  
+}
+
+#restart-btn {
+  background-color: #ff6700;
+  color: white;
+  padding: 20px 50px;
+  font-size: 25px;
+  font-family: "Play", sans-serif;
+  border-radius: 30px;
+  margin-top: 32px;
 }
