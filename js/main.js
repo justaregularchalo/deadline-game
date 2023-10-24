@@ -10,7 +10,7 @@ let gameBoxNode = document.querySelector("#game-box");
 
 let scoreScreenNode = document.querySelector("#score-display");
 
-let restartBtnNode =document.querySelector("#restart-btn");
+let restartBtnNode = document.querySelector("#restart-btn");
 
 let gameOverBoxNode = document.querySelector("#gameover-screen");
 
@@ -28,7 +28,7 @@ const startGame = () => {
 
 //EVENT  LISTENERS
 startBtnNode.addEventListener("click", startGame);
-
+// restartBtnNode.addEventListener("click", startGame);
 
 document.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
@@ -48,7 +48,7 @@ document.addEventListener("keydown", (event) => {
   }
 
 
-  restartBtnNode.addEventListener("click", startGame);
+ 
 
 
 });
