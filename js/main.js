@@ -8,6 +8,8 @@ let gameScreenNode = document.querySelector("#game-screen");
 
 let gameBoxNode = document.querySelector("#game-box");
 
+let scoreScreenNode = document.querySelector("#score-display");
+
 let gameOverBoxNode = document.querySelector("#gameover-screen");
 
 let gameObject;

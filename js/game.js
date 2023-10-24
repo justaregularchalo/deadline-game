@@ -11,6 +11,8 @@ class Game {
 
     this.score = new Score();
 
+    this.scoreRealTime =document.querySelector("#score-display");
+
     this.timer = 0;
     this.delayMeme = 240;
     this.delayCoffee = 180;
@@ -38,10 +40,11 @@ class Game {
         eachMeme.y < this.hero.y + this.hero.h &&
         eachMeme.y + eachMeme.h > this.hero.y
       ) {
-        this.bonus;
-        console.log("bonus meme");
+        this.score += this.bonus;;
+        console.log("bonus meme sumando");
         this.memeArray[0].node.remove();
         this.memeArray.shift();
+        this.updateScore();
       }
     });
   };
@@ -71,10 +74,11 @@ class Game {
         eachCoffee.y < this.hero.y + this.hero.h &&
         eachCoffee.y + eachCoffee.h > this.hero.y
       ) {
-        this.bonus;
+        this.score += this.bonus;
         console.log("bonus café");
         this.coffeeArray[0].node.remove();
         this.coffeeArray.shift();
+        this.updateScore();
       }
     });
   };
@@ -102,10 +106,11 @@ class Game {
         eachBrief.y < this.hero.y + this.hero.h &&
         eachBrief.y + eachBrief.h > this.hero.y
       ) {
-        this.damage;
+        this.score += this.damage;;
         console.log("daño brief");
         this.briefArray[0].node.remove();
         this.briefArray.shift();
+        this.updateScore();
       }
     });
   };
@@ -117,6 +122,16 @@ class Game {
       }
     }
   };
+
+
+
+  updateScore = () => {
+
+    this.scoreRealTime.innerText = this.score
+
+  }
+
+
 
   gameOver() {
     this.isGameOn < 0;
@@ -161,6 +176,8 @@ class Game {
     this.collisionHeroVsBrief();
 
     this.briefScreenDissapear();
+
+
 
     //esta es la recursión
     this.timer++;
