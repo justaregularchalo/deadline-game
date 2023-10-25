@@ -42,11 +42,11 @@ class Game {
 
   memeSound = () => {
     const memeImpact = document.querySelector("#laugh-audio");
-    memeImpact.volume = 0.7;
+    memeImpact.volume = 0.8;
     memeImpact.play();
     setTimeout(() => {
       memeImpact.pause();
-    }, 500);
+    }, 1000);
   };
 
   collisionHeroVsMeme = () => {
@@ -164,11 +164,11 @@ class Game {
 
   hitSound = () => {
     const hitImpact = document.querySelector("#hit-audio");
-    hitImpact.volume = 0.7;
+    hitImpact.volume = 0.6;
     hitImpact.play();
     setTimeout(() => {
       hitImpact.pause();
-    }, 500);
+    }, 200);
   };
   
 
@@ -204,7 +204,7 @@ class Game {
   playMusic(){
 
     const musicElement = document.querySelector("#game-audio"); 
-    musicElement.volume = 0.2
+    musicElement.volume = 0.1
     musicElement.currentTime = 0;
     musicElement.play();
     
@@ -225,6 +225,7 @@ class Game {
   evilLaugh () {
 
     const evil =document.querySelector("#game-evil")
+    evil.volume = 0.5;
     evil.play();
 
 
