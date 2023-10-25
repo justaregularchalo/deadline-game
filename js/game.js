@@ -39,6 +39,16 @@ class Game {
     }
   };
 
+
+  memeSound = () => {
+    const memeImpact = document.querySelector("#laugh-audio");
+    memeImpact.volume = 0.7;
+    memeImpact.play();
+    setTimeout(() => {
+      memeImpact.pause();
+    }, 500);
+  };
+
   collisionHeroVsMeme = () => {
     this.memeArray.forEach((eachMeme) => {
       if (
@@ -52,6 +62,7 @@ class Game {
         this.memeArray[0].node.remove();
         this.memeArray.shift();
         this.updateScore();
+        this.memeSound();
       }
     });
   };
@@ -71,6 +82,17 @@ class Game {
     }
   };
 
+
+  coffeeSound = () => {
+    const coffeeImpact = document.querySelector("#coffee-audio");
+    coffeeImpact.volume = 0.7;
+    coffeeImpact.play();
+    setTimeout(() => {
+      coffeeImpact.pause();
+    }, 500);
+  };
+  
+
   collisionHeroVsCoffee = () => {
     this.coffeeArray.forEach((eachCoffee) => {
       if (
@@ -84,6 +106,7 @@ class Game {
         this.coffeeArray[0].node.remove();
         this.coffeeArray.shift();
         this.updateScore();
+        this.coffeeSound ();
       }
     });
   };
@@ -137,6 +160,18 @@ class Game {
     } 
   };
 
+
+
+  hitSound = () => {
+    const hitImpact = document.querySelector("#hit-audio");
+    hitImpact.volume = 0.7;
+    hitImpact.play();
+    setTimeout(() => {
+      hitImpact.pause();
+    }, 500);
+  };
+  
+
   collisionHeroVsBrief = () => {
     for (let i = 0; i < this.briefArray.length; i++) {
       const eachBrief = this.briefArray[i];
@@ -151,6 +186,7 @@ class Game {
         eachBrief.node.remove(); 
         this.briefArray.splice(i, 1); 
         this.updateScore();
+        this.hitSound();
         break; 
       }
     }
