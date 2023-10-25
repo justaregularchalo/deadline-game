@@ -22,6 +22,9 @@ class Game {
     this.delayCoffee = 180;
 
     this.GameOn = this.score > 0;
+
+    this.currentLevel = 1;
+
   }
 
   // métodos
@@ -91,14 +94,52 @@ class Game {
   };
 
   briefSpawn = () => {
-    if (this.timer % 120 === 0) {
+
+      let levelUp;
+      if(this.score > 15 && this.score < 30) {
+    
+        if (this.currentLevel <= 2){
+          this.currentLevel = 2;
+          levelUp = 90;
+
+        } else{
+          this.currentLevel =3;
+          levelUp = 60;
+        
+        }       
+      } else if (this.score >= 30) {
+        levelUp = 60;
+        this.currentLevel = 3;
+      } else {
+        
+          if (this.currentLevel == 1) {
+            levelUp = 120
+          } else if (this.currentLevel == 2) {
+            levelUp = 90;
+          } else{
+            levelUp = 60;
+          }
+
+          }
+        
+        
+        
+
+      console.log("levelUp" + levelUp);
+      console.log(this.timer);
+      console.log("- -");
+      console.log(this.currentLevel);
+
+    if (this.timer % levelUp === 0) {
       let newBrief = new Brief();
       this.briefArray.push(newBrief);
-    }
+
+    } 
   };
 
   collisionHeroVsBrief = () => {
-    this.briefArray.forEach((eachBrief) => {
+    for (let i = 0; i < this.briefArray.length; i++) {
+      const eachBrief = this.briefArray[i];
       if (
         eachBrief.x < this.hero.x + this.hero.w &&
         eachBrief.x + eachBrief.w > this.hero.x &&
@@ -107,12 +148,14 @@ class Game {
       ) {
         this.score += this.damage;
         console.log("daño brief");
-        this.briefArray[0].node.remove();
-        this.briefArray.shift();
+        eachBrief.node.remove(); // Eliminar el elemento actual
+        this.briefArray.splice(i, 1); // Quitar el elemento del array
         this.updateScore();
+        break; // Salir del bucle después del primer impacto
       }
-    });
+    }
   };
+  
 
   briefScreenDissapear = () => {
     if (this.coffeeArray.length > 0) {
@@ -135,7 +178,7 @@ class Game {
     return this.score < 0;
   };
 
-  
+
 
   gameLoop = () => {
     this.hero.gravityEffect();

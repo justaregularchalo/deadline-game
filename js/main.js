@@ -30,7 +30,7 @@ const startGame = () => {
 
 const resetGame = () => {
  
-  gameBoxNode.innerHTML = `<p id="score-display">Score: <span id="score">0</span></p>`;
+  gameBoxNode.innerHTML = `<p id="score-display"> Will to live: <span id="score">0</span></p>`;
 
   startScreenNode.style.display = "none";
   gameScreenNode.style .display = "flex";
