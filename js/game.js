@@ -25,6 +25,9 @@ class Game {
 
     this.currentLevel = 1;
 
+   
+    
+
   }
 
   // métodos
@@ -122,9 +125,6 @@ class Game {
 
           }
         
-        
-        
-
       console.log("levelUp" + levelUp);
       console.log(this.timer);
       console.log("- -");
@@ -148,10 +148,10 @@ class Game {
       ) {
         this.score += this.damage;
         console.log("daño brief");
-        eachBrief.node.remove(); // Eliminar el elemento actual
-        this.briefArray.splice(i, 1); // Quitar el elemento del array
+        eachBrief.node.remove(); 
+        this.briefArray.splice(i, 1); 
         this.updateScore();
-        break; // Salir del bucle después del primer impacto
+        break; 
       }
     }
   };
@@ -165,16 +165,44 @@ class Game {
     }
   };
 
+  playMusic(){
+
+    const musicElement = document.querySelector("#game-audio"); 
+    musicElement.volume = 0.2
+    musicElement.currentTime = 0;
+    musicElement.play();
+    
+  }
+
+  stopMusic() {
+    const musicElement = document.querySelector("#game-audio");
+    musicElement.pause();
+  }
+
+
   updateScore() {
     const scoreElement = document.querySelector("#score");
     scoreElement.innerText = this.score;
   }
 
+
+  evilLaugh () {
+
+    const evil =document.querySelector("#game-evil")
+    evil.play();
+
+
+  }
+
+
   gameOver = () => {
     if (this.score < 0) {
       gameScreenNode.style.display = "none";
       gameOverBoxNode.style.display = "flex";
+      this.stopMusic ();
+      this.evilLaugh ();
     }
+    
     return this.score < 0;
   };
 
@@ -213,6 +241,8 @@ class Game {
     this.collisionHeroVsBrief();
 
     this.briefScreenDissapear();
+
+    
 
     //esta es la recursión
     this.timer++;

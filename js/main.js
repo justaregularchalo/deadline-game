@@ -14,6 +14,9 @@ let restartBtnNode = document.querySelector("#restart-btn");
 
 let gameOverBoxNode = document.querySelector("#gameover-screen");
 
+
+
+
 let gameObject;
 
 // MANAGEMENT FUNCTIONS
@@ -24,20 +27,23 @@ const startGame = () => {
   gameOverBoxNode.style.display = "none";
 
   gameObject = new Game();
+  gameObject.playMusic();
   gameObject.gameLoop();
 };
 
 
 const resetGame = () => {
  
+  
   gameBoxNode.innerHTML = `<p id="score-display"> Will to live: <span id="score">0</span></p>`;
 
   startScreenNode.style.display = "none";
   gameScreenNode.style .display = "flex";
   gameOverBoxNode.style.display = "none";
-
   gameObject = new Game();
+  gameObject.playMusic();
   gameObject.gameLoop();
+
 }
 
 

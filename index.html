@@ -35,18 +35,27 @@
     
     <!-- GAME SCREEN -->
     <div id="game-screen" class="container">
+      <audio id="game-audio" src="./sound/MUSIC.mp3" preload="auto" loop></audio>
+
       <div id="game-box">
         <p id="score-display">Will to live: <span id="score">0</span></p>
+       
+
       </div>
     </div>
     
     <!-- GAME OVER -->
     <div id="gameover-screen" class="container">
+
+
+      <audio id="game-evil" src="./sound/EVIL LAUGH .wav" preload="auto"></audio>
+
       <img
         src="./images/PANTALLAS-GAME-OVER.png"
         width="800"
         alt="Game Over!"
       />
+     
 
       <button id="restart-btn">Restart Game</button>
     </div>
