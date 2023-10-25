@@ -36,9 +36,13 @@ body {
 
 #game-box p{
 
-  font-family: 'Bungee Spice', sans-serif;
+  font-family: 'Bangers', sans-serif;
   font-size: xx-large;
-  margin: 20px;
+  background: linear-gradient(to top,red,rgb(230, 156, 19));
+  color: transparent; 
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin: 30px;
   left: 10px;
   
 

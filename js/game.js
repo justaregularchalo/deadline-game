@@ -44,9 +44,9 @@ class Game {
     const memeImpact = document.querySelector("#laugh-audio");
     memeImpact.volume = 0.8;
     memeImpact.play();
-    setTimeout(() => {
-      memeImpact.pause();
-    }, 1000);
+    // setTimeout(() => {
+    //   memeImpact.pause();
+    // }, 1000);
   };
 
   collisionHeroVsMeme = () => {
@@ -87,9 +87,9 @@ class Game {
     const coffeeImpact = document.querySelector("#coffee-audio");
     coffeeImpact.volume = 0.7;
     coffeeImpact.play();
-    setTimeout(() => {
-      coffeeImpact.pause();
-    }, 500);
+    // setTimeout(() => {
+    //   coffeeImpact.pause();
+    // }, 500);
   };
   
 
@@ -166,9 +166,9 @@ class Game {
     const hitImpact = document.querySelector("#hit-audio");
     hitImpact.volume = 0.6;
     hitImpact.play();
-    setTimeout(() => {
-      hitImpact.pause();
-    }, 200);
+    // setTimeout(() => {
+    //   hitImpact.pause();
+    // }, 200);
   };
   
 
