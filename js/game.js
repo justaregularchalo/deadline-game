@@ -9,6 +9,8 @@ class Game {
 
     this.briefArray = [];
 
+    // this.plus5 = new Plus5 ();
+
     // this.score = new Score();
     // this.scoreRealTime =document.querySelector("#score-display");
 
@@ -54,14 +56,6 @@ class Game {
     // }, 1000);
   };
 
-  // plus5 = () => {
-  //   const plus5Image= document.querySelector("#+5");
-
-  //   setTimeout(() => {
-  //     plus5Image.src = "+5.png";
-  //   }, 500);
-  // };
-
   timeCounter = () => {
     this.seconds = Math.floor(this.counterSeconds / 60);
     this.minutes = Math.floor(this.counterMinutes / 3600);
@@ -77,6 +71,27 @@ class Game {
   time2Element.innerText = `${this.minutes.toString().padStart(2, '0')}:${this.seconds.toString().padStart(2, '0')}`;
   };
 
+  addPlusFive = () => {
+    const plusFive = document.querySelector("#plus-5");
+  
+    plusFive.style.position = "absolute";
+    plusFive.style.left = "650px"; 
+    plusFive.style.top = "180px"; 
+    plusFive.style.width = "80px"; 
+    plusFive.style.height = "50px"; 
+  
+    gameBoxNode.append(plusFive);
+  
+    setTimeout(() => {
+      plusFive.remove(); 
+    }, 500);
+  };
+  
+  
+
+
+
+
   collisionHeroVsMeme = () => {
     this.memeArray.forEach((eachMeme) => {
       if (
@@ -91,10 +106,21 @@ class Game {
         this.memeArray.shift();
         this.updateScore();
         this.memeSound();
-        // this.plus5();
+        this.addPlusFive();
+      
       }
     });
   };
+
+
+
+
+
+
+
+
+
+
 
   memeScreenDissapear = () => {
     if (this.memeArray.length > 0) {
