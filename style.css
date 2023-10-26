@@ -39,12 +39,13 @@ body {
 
   font-family: 'Bangers', sans-serif;
   font-size: xx-large;
-  background: linear-gradient(to top,red,rgb(230, 156, 19));
+  background: linear-gradient(to top,red,rgb(230, 19, 135));
   color: transparent; 
   background-clip: text;
   -webkit-background-clip: text;
-  margin: 30px;
+  margin: 40px;
   left: 10px;
+  
   
 
 
@@ -54,14 +55,31 @@ body {
   position: absolute;
   font-family: 'Bangers', sans-serif;
   font-size: xx-large;
-  background: linear-gradient(to top, red, rgb(216, 230, 19));
+  background: linear-gradient(to top, rgb(123, 0, 255), rgb(236, 8, 107));
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
-  top: 10px; 
-  right: 30px; 
+  top: 0px; 
+  right: 30px;
+  padding: 10px 20px; 
+  border-radius: 15px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
 }
 
+
+
+#counter-gameover{
+
+  font-family: 'Bangers', sans-serif;
+  font-size: xx-large;
+  background: linear-gradient(to top,red,rgb(230, 19, 135));
+  color: transparent; 
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin: 40px;
+  left: 10px;
+  
+}
 
 
 

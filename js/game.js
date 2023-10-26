@@ -26,12 +26,14 @@ class Game {
     this.currentLevel = 1;
 
     this.counter = 0;
-    
+
     this.minutes = 0;
 
     this.seconds = 0;
 
+    this.counterSeconds = 0;
 
+    this.counterMinutes = 0;
   }
 
   // métodos
@@ -42,7 +44,6 @@ class Game {
       this.memeArray.push(newMeme);
     }
   };
-
 
   memeSound = () => {
     const memeImpact = document.querySelector("#laugh-audio");
@@ -55,27 +56,26 @@ class Game {
 
   // plus5 = () => {
   //   const plus5Image= document.querySelector("#+5");
-    
+
   //   setTimeout(() => {
   //     plus5Image.src = "+5.png";
   //   }, 500);
   // };
 
   timeCounter = () => {
+    this.seconds = Math.floor(this.counterSeconds / 60);
+    this.minutes = Math.floor(this.counterMinutes / 3600);
 
-    this.seconds = Math.floor(this.counter % 60);
-
-    this.minutes = Math.floor(this.counter / 60);
+    if (this.counterSeconds === 3600) {
+      this.counterSeconds = 0;
+    }
 
     const time1Element = document.querySelector("#time1");
-    time1Element.innerText = `${this.minutes}:${this.seconds}`;
+  time1Element.innerText = `${this.minutes.toString().padStart(2, '0')}:${this.seconds.toString().padStart(2, '0')}`;
 
-    const time2Element = document.querySelector("#time2");
-    time2Element.innerText = `${this.minutes}:${this.seconds}`;
-
-  }
-
-
+  const time2Element = document.querySelector("#time2");
+  time2Element.innerText = `${this.minutes.toString().padStart(2, '0')}:${this.seconds.toString().padStart(2, '0')}`;
+  };
 
   collisionHeroVsMeme = () => {
     this.memeArray.forEach((eachMeme) => {
@@ -111,7 +111,6 @@ class Game {
     }
   };
 
-
   coffeeSound = () => {
     const coffeeImpact = document.querySelector("#coffee-audio");
     coffeeImpact.volume = 0.7;
@@ -120,7 +119,6 @@ class Game {
     //   coffeeImpact.pause();
     // }, 500);
   };
-  
 
   collisionHeroVsCoffee = () => {
     this.coffeeArray.forEach((eachCoffee) => {
@@ -135,7 +133,7 @@ class Game {
         this.coffeeArray[0].node.remove();
         this.coffeeArray.shift();
         this.updateScore();
-        this.coffeeSound ();
+        this.coffeeSound();
       }
     });
   };
@@ -149,47 +147,38 @@ class Game {
   };
 
   briefSpawn = () => {
-
-      let levelUp;
-      if(this.score > 15 && this.score < 30) {
-    
-        if (this.currentLevel <= 2){
-          this.currentLevel = 2;
-          levelUp = 90;
-
-        } else{
-          this.currentLevel =3;
-          levelUp = 60;
-        
-        }       
-      } else if (this.score >= 30) {
-        levelUp = 60;
-        this.currentLevel = 3;
+    let levelUp;
+    if (this.score > 15 && this.score < 30) {
+      if (this.currentLevel <= 2) {
+        this.currentLevel = 2;
+        levelUp = 90;
       } else {
-        
-          if (this.currentLevel == 1) {
-            levelUp = 120
-          } else if (this.currentLevel == 2) {
-            levelUp = 90;
-          } else{
-            levelUp = 60;
-          }
+        this.currentLevel = 3;
+        levelUp = 60;
+      }
+    } else if (this.score >= 30) {
+      levelUp = 60;
+      this.currentLevel = 3;
+    } else {
+      if (this.currentLevel == 1) {
+        levelUp = 120;
+      } else if (this.currentLevel == 2) {
+        levelUp = 90;
+      } else {
+        levelUp = 60;
+      }
+    }
 
-          }
-        
-      console.log("levelUp" + levelUp);
-      console.log(this.timer);
-      console.log("- -");
-      console.log(this.currentLevel);
+    console.log("levelUp" + levelUp);
+    console.log(this.timer);
+    console.log("- -");
+    console.log(this.currentLevel);
 
     if (this.timer % levelUp === 0) {
       let newBrief = new Brief();
       this.briefArray.push(newBrief);
-
-    } 
+    }
   };
-
-
 
   hitSound = () => {
     const hitImpact = document.querySelector("#hit-audio");
@@ -199,7 +188,6 @@ class Game {
     //   hitImpact.pause();
     // }, 200);
   };
-  
 
   collisionHeroVsBrief = () => {
     for (let i = 0; i < this.briefArray.length; i++) {
@@ -212,15 +200,14 @@ class Game {
       ) {
         this.score += this.damage;
         console.log("daño brief");
-        eachBrief.node.remove(); 
-        this.briefArray.splice(i, 1); 
+        eachBrief.node.remove();
+        this.briefArray.splice(i, 1);
         this.updateScore();
         this.hitSound();
-        break; 
+        break;
       }
     }
   };
-  
 
   briefScreenDissapear = () => {
     if (this.coffeeArray.length > 0) {
@@ -230,13 +217,11 @@ class Game {
     }
   };
 
-  playMusic(){
-
-    const musicElement = document.querySelector("#game-audio"); 
-    musicElement.volume = 0.1
+  playMusic() {
+    const musicElement = document.querySelector("#game-audio");
+    musicElement.volume = 0.1;
     musicElement.currentTime = 0;
     musicElement.play();
-    
   }
 
   stopMusic() {
@@ -244,35 +229,27 @@ class Game {
     musicElement.pause();
   }
 
-
   updateScore() {
     const scoreElement = document.querySelector("#score");
     scoreElement.innerText = this.score;
   }
 
-
-  evilLaugh () {
-
-    const evil =document.querySelector("#game-evil")
+  evilLaugh() {
+    const evil = document.querySelector("#game-evil");
     evil.volume = 0.5;
     evil.play();
-
-
   }
-
 
   gameOver = () => {
     if (this.score < 0) {
       gameScreenNode.style.display = "none";
       gameOverBoxNode.style.display = "flex";
-      this.stopMusic ();
-      this.evilLaugh ();
+      this.stopMusic();
+      this.evilLaugh();
     }
-    
+
     return this.score < 0;
   };
-
-
 
   gameLoop = () => {
     this.hero.gravityEffect();
@@ -294,12 +271,9 @@ class Game {
     }
     if (this.timer > this.delayCoffee) {
       this.coffeeSpawn();
-
     }
 
-
-    this.timeCounter ();
-
+    this.timeCounter();
 
     this.collisionHeroVsMeme();
     this.memeScreenDissapear();
@@ -313,10 +287,10 @@ class Game {
 
     this.briefScreenDissapear();
 
-    
-
     //esta es la recursión
-    // this.counter++;
+    this.counter++;
+    this.counterSeconds++;
+    this.counterMinutes++;
     this.timer++;
 
     if (this.gameOver()) {
