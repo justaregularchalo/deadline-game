@@ -71,13 +71,18 @@ body {
 #counter-gameover{
 
   font-family: 'Bangers', sans-serif;
-  font-size: xx-large;
+  font-size: 70px;
   background: linear-gradient(to top,red,rgb(230, 19, 135));
   color: transparent; 
   background-clip: text;
   -webkit-background-clip: text;
-  margin: 40px;
-  left: 10px;
+  margin: 18px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  
   
 }
 
