@@ -16,7 +16,7 @@ class Game {
 
     this.score = 0;
 
-    this.damage = -5;
+    this.damage = -10;
     this.bonus = 5;
 
     this.timer = 0;
@@ -65,31 +65,53 @@ class Game {
     }
 
     const time1Element = document.querySelector("#time1");
-  time1Element.innerText = `${this.minutes.toString().padStart(2, '0')}:${this.seconds.toString().padStart(2, '0')}`;
+    time1Element.innerText = `${this.minutes
+      .toString()
+      .padStart(2, "0")}:${this.seconds.toString().padStart(2, "0")}`;
 
-  const time2Element = document.querySelector("#time2");
-  time2Element.innerText = `${this.minutes.toString().padStart(2, '0')}:${this.seconds.toString().padStart(2, '0')}`;
+    const time2Element = document.querySelector("#time2");
+    time2Element.innerText = `${this.minutes
+      .toString()
+      .padStart(2, "0")}:${this.seconds.toString().padStart(2, "0")}`;
   };
 
   addPlusFive = () => {
-    const plusFive = document.querySelector("#plus-5");
   
-    plusFive.style.position = "absolute";
-    plusFive.style.left = "650px"; 
-    plusFive.style.top = "180px"; 
-    plusFive.style.width = "80px"; 
-    plusFive.style.height = "50px"; 
+    const plusFiveImage = new Image();
+    plusFiveImage.src = "./images/+5.png";
   
-    gameBoxNode.append(plusFive);
+    plusFiveImage.style.position = "absolute";
+    plusFiveImage.style.left = "198px";
+    plusFiveImage.style.top = "30px";
+    plusFiveImage.style.width = "45px";
+    plusFiveImage.style.height = "50px";
+  
+    gameBoxNode.appendChild(plusFiveImage);
   
     setTimeout(() => {
-      plusFive.remove(); 
+      plusFiveImage.remove();
     }, 500);
   };
   
+
+
+  addMinusFive = () => {
   
-
-
+    const minusFiveImage = new Image();
+    minusFiveImage.src = "./images/menos10.png";
+  
+    minusFiveImage.style.position = "absolute";
+    minusFiveImage.style.left = "198px";
+    minusFiveImage.style.top = "30px";
+    minusFiveImage.style.width = "45px";
+    minusFiveImage.style.height = "50px";
+  
+    gameBoxNode.appendChild(minusFiveImage);
+  
+    setTimeout(() => {
+      minusFiveImage.remove();
+    }, 500);
+  };
 
 
   collisionHeroVsMeme = () => {
@@ -107,20 +129,9 @@ class Game {
         this.updateScore();
         this.memeSound();
         this.addPlusFive();
-      
       }
     });
   };
-
-
-
-
-
-
-
-
-
-
 
   memeScreenDissapear = () => {
     if (this.memeArray.length > 0) {
@@ -160,6 +171,7 @@ class Game {
         this.coffeeArray.shift();
         this.updateScore();
         this.coffeeSound();
+        this.addPlusFive();
       }
     });
   };
@@ -230,6 +242,7 @@ class Game {
         this.briefArray.splice(i, 1);
         this.updateScore();
         this.hitSound();
+        this.addMinusFive();
         break;
       }
     }
