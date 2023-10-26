@@ -11,6 +11,7 @@ body {
   font-family: "Play", sans-serif;
   border-radius: 30px;
   margin-top: 32px;
+  cursor: pointer;
 }
 
 .container {
@@ -34,7 +35,7 @@ body {
   background-repeat: no-repeat;
 }
 
-#game-box p{
+#score-display{
 
   font-family: 'Bangers', sans-serif;
   font-size: xx-large;
@@ -48,6 +49,19 @@ body {
 
 
 }
+
+#counter-display {
+  position: absolute;
+  font-family: 'Bangers', sans-serif;
+  font-size: xx-large;
+  background: linear-gradient(to top, red, rgb(216, 230, 19));
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  top: 10px; 
+  right: 30px; 
+}
+
 
 
 
@@ -69,4 +83,5 @@ body {
   font-family: "Play", sans-serif;
   border-radius: 30px;
   margin-top: 32px;
+  cursor: pointer;
 }

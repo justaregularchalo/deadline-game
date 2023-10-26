@@ -10,6 +10,10 @@ let gameBoxNode = document.querySelector("#game-box");
 
 let scoreScreenNode = document.querySelector("#score-display");
 
+let counterScreenNode = document.querySelector ("#counter-display");
+
+let counterGameOverScreen = document.querySelector ("#counter-gameover");
+
 let restartBtnNode = document.querySelector("#restart-btn");
 
 let gameOverBoxNode = document.querySelector("#gameover-screen");
@@ -35,7 +39,7 @@ const startGame = () => {
 const resetGame = () => {
  
   
-  gameBoxNode.innerHTML = `<p id="score-display"> Will to live: <span id="score">0</span></p>`;
+  gameBoxNode.innerHTML = `<p id="score-display"> Will to live: <span id="score">0</span></p>,<p id="counter-display">TIME: <span id="time1">0</span></p>`
 
   startScreenNode.style.display = "none";
   gameScreenNode.style .display = "flex";

@@ -25,8 +25,12 @@ class Game {
 
     this.currentLevel = 1;
 
-   
+    this.counter = 0;
     
+    this.minutes = 0;
+
+    this.seconds = 0;
+
 
   }
 
@@ -49,6 +53,30 @@ class Game {
     // }, 1000);
   };
 
+  // plus5 = () => {
+  //   const plus5Image= document.querySelector("#+5");
+    
+  //   setTimeout(() => {
+  //     plus5Image.src = "+5.png";
+  //   }, 500);
+  // };
+
+  timeCounter = () => {
+
+    this.seconds = Math.floor(this.counter % 60);
+
+    this.minutes = Math.floor(this.counter / 60);
+
+    const time1Element = document.querySelector("#time1");
+    time1Element.innerText = `${this.minutes}:${this.seconds}`;
+
+    const time2Element = document.querySelector("#time2");
+    time2Element.innerText = `${this.minutes}:${this.seconds}`;
+
+  }
+
+
+
   collisionHeroVsMeme = () => {
     this.memeArray.forEach((eachMeme) => {
       if (
@@ -63,6 +91,7 @@ class Game {
         this.memeArray.shift();
         this.updateScore();
         this.memeSound();
+        // this.plus5();
       }
     });
   };
@@ -265,7 +294,12 @@ class Game {
     }
     if (this.timer > this.delayCoffee) {
       this.coffeeSpawn();
+
     }
+
+
+    this.timeCounter ();
+
 
     this.collisionHeroVsMeme();
     this.memeScreenDissapear();
@@ -282,6 +316,7 @@ class Game {
     
 
     //esta es la recursión
+    // this.counter++;
     this.timer++;
 
     if (this.gameOver()) {
