@@ -25,23 +25,21 @@ class Hero {
 
     this.inAir = false;
 
-    this.marginLeft =372;
+    this.marginLeft = 372;
     this.marginRight = 690;
   }
 
   moveLeft = () => {
-    if (this.x - this.speedX >= this.marginLeft){
-        this.x -= this.speedX;
-        this.node.style.left = `${this.x}px`;
-
+    if (this.x - this.speedX >= this.marginLeft) {
+      this.x -= this.speedX;
+      this.node.style.left = `${this.x}px`;
     }
-
   };
 
   moveRight = () => {
-    if (this.x - this.speedX <= this.marginRight){
-    this.x += this.speedX;
-    this.node.style.left = `${this.x}px`;
+    if (this.x - this.speedX <= this.marginRight) {
+      this.x += this.speedX;
+      this.node.style.left = `${this.x}px`;
     }
   };
 

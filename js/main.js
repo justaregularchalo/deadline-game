@@ -10,16 +10,13 @@ let gameBoxNode = document.querySelector("#game-box");
 
 let scoreScreenNode = document.querySelector("#score-display");
 
-let counterScreenNode = document.querySelector ("#counter-display");
+let counterScreenNode = document.querySelector("#counter-display");
 
-let counterGameOverScreen = document.querySelector ("#counter-gameover");
+let counterGameOverScreen = document.querySelector("#counter-gameover");
 
 let restartBtnNode = document.querySelector("#restart-btn");
 
 let gameOverBoxNode = document.querySelector("#gameover-screen");
-
-
-
 
 let gameObject;
 
@@ -35,21 +32,16 @@ const startGame = () => {
   gameObject.gameLoop();
 };
 
-
 const resetGame = () => {
- 
-  
-  gameBoxNode.innerHTML = `<p id="score-display"> Will to live: <span id="score">0</span></p>,<p id="counter-display">TIME: <span id="time1">0</span></p>`
+  gameBoxNode.innerHTML = `<p id="score-display"> Will to live: <span id="score">0</span></p>,<p id="counter-display">TIME: <span id="time1">0</span></p>`;
 
   startScreenNode.style.display = "none";
-  gameScreenNode.style .display = "flex";
+  gameScreenNode.style.display = "flex";
   gameOverBoxNode.style.display = "none";
   gameObject = new Game();
   gameObject.playMusic();
   gameObject.gameLoop();
-
-}
-
+};
 
 //EVENT  LISTENERS
 startBtnNode.addEventListener("click", startGame);
@@ -71,13 +63,4 @@ document.addEventListener("keydown", (event) => {
   if (event.code === "ArrowRight") {
     gameObject.hero.moveRight();
   }
-
-
- 
-
-
 });
-
-
-
-

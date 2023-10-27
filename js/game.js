@@ -9,11 +9,6 @@ class Game {
 
     this.briefArray = [];
 
-    // this.plus5 = new Plus5 ();
-
-    // this.score = new Score();
-    // this.scoreRealTime =document.querySelector("#score-display");
-
     this.score = 0;
 
     this.damage = -10;
@@ -70,9 +65,7 @@ class Game {
       .padStart(2, "0")}:${this.seconds.toString().padStart(2, "0")}`;
 
     const time2Element = document.querySelector("#time2");
-    time2Element.innerText = `${this.minutes
-      .toString()
-      .padStart(2, "0")}:${this.seconds.toString().padStart(2, "0")}`;
+    time2Element.innerText = `${this.minutes.toString().padStart(2, "0")}:${this.seconds.toString().padStart(2, "0")}`;
   };
 
   addPlusFive = () => {
@@ -152,9 +145,7 @@ class Game {
     const coffeeImpact = document.querySelector("#coffee-audio");
     coffeeImpact.volume = 0.7;
     coffeeImpact.play();
-    // setTimeout(() => {
-    //   coffeeImpact.pause();
-    // }, 500);
+   
   };
 
   collisionHeroVsCoffee = () => {
@@ -206,12 +197,6 @@ class Game {
         levelUp = 60;
       }
     }
-
-    console.log("levelUp" + levelUp);
-    console.log(this.timer);
-    console.log("- -");
-    console.log(this.currentLevel);
-
     if (this.timer % levelUp === 0) {
       let newBrief = new Brief();
       this.briefArray.push(newBrief);
@@ -222,9 +207,7 @@ class Game {
     const hitImpact = document.querySelector("#hit-audio");
     hitImpact.volume = 0.6;
     hitImpact.play();
-    // setTimeout(() => {
-    //   hitImpact.pause();
-    // }, 200);
+   
   };
 
   collisionHeroVsBrief = () => {
@@ -237,7 +220,6 @@ class Game {
         eachBrief.y + eachBrief.h > this.hero.y
       ) {
         this.score += this.damage;
-        console.log("daño brief");
         eachBrief.node.remove();
         this.briefArray.splice(i, 1);
         this.updateScore();

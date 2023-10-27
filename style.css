@@ -35,45 +35,37 @@ body {
   background-repeat: no-repeat;
 }
 
-#score-display{
-
-  font-family: 'Bangers', sans-serif;
+#score-display {
+  font-family: "Bangers", sans-serif;
   font-size: xx-large;
-  background: linear-gradient(to top,red,rgb(230, 19, 135));
-  color: transparent; 
+  background: linear-gradient(to top, red, rgb(230, 19, 135));
+  color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
   margin: 40px;
   left: 10px;
-  
-  
-
-
 }
 
 #counter-display {
   position: absolute;
-  font-family: 'Bangers', sans-serif;
+  font-family: "Bangers", sans-serif;
   font-size: xx-large;
   background: linear-gradient(to top, rgb(123, 0, 255), rgb(236, 8, 107));
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
-  top: 0px; 
+  top: 0px;
   right: 30px;
-  padding: 10px 20px; 
-  border-radius: 15px; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-
-
-#counter-gameover{
-
-  font-family: 'Bangers', sans-serif;
+#counter-gameover {
+  font-family: "Bangers", sans-serif;
   font-size: 70px;
-  background: linear-gradient(to top,red,rgb(230, 19, 135));
-  color: transparent; 
+  background: linear-gradient(to top, red, rgb(230, 19, 135));
+  color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
   margin: 18px;
@@ -82,20 +74,11 @@ body {
   justify-content: center;
   align-items: center;
   gap: 4px;
-  
-  
 }
-
-
-
 
 #game-screen,
 #gameover-screen {
   display: none;
-
-
-
-  
 }
 
 #restart-btn {

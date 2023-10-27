@@ -9,29 +9,34 @@
     />
     <title>Deadline - The Creative Agency Game</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Play:wght@400;700&family=Righteous&family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=Play:wght@400;700&family=Righteous&family=Roboto:wght@900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-
-    
-
     <!-- START SCREEN -->
 
     <div id="start-screen" class="container">
-      <img src="./images/PANTALLA INICIO .png"
+      <img
+        src="./images/PANTALLA INICIO .png"
         width="800"
         alt="Deadline Game"
       />
       <button id="play-btn">Play!</button>
     </div>
-    
+
     <!-- GAME SCREEN -->
 
     <div id="game-screen" class="container">
-
-      <audio id="game-audio" src="./sound/MUSIC.mp3" preload="auto" loop></audio>
+      <audio
+        id="game-audio"
+        src="./sound/MUSIC.mp3"
+        preload="auto"
+        loop
+      ></audio>
 
       <audio id="hit-audio" src="./sound/HIT.wav" preload="auto"></audio>
 
@@ -39,26 +44,24 @@
 
       <audio id="coffee-audio" src="./sound/YESS.wav" preload="auto"></audio>
 
-
       <div id="game-box">
-
-
         <!-- <img id = "plus-5"src="./images/+5.png"
         width="10"
         alt="+5"
       /> -->
         <p id="score-display">WILL TO LIVE: <span id="score">0</span></p>
-       
-        <p id="counter-display">TIME: <span id="time1">0</span></p>
 
+        <p id="counter-display">TIME: <span id="time1">0</span></p>
       </div>
     </div>
-    
+
     <!-- GAME OVER -->
     <div id="gameover-screen" class="container">
-
-
-      <audio id="game-evil" src="./sound/EVIL LAUGH .wav" preload="auto"></audio>
+      <audio
+        id="game-evil"
+        src="./sound/EVIL LAUGH .wav"
+        preload="auto"
+      ></audio>
 
       <p id="counter-gameover">Your Time: <span id="time2">0</span></p>
 
@@ -67,11 +70,9 @@
         width="800"
         alt="Game Over!"
       />
-     
 
       <button id="restart-btn">Restart Game</button>
     </div>
-    
 
     <script src="./js/main.js"></script>
     <script src="./js/game.js"></script>

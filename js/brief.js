@@ -7,10 +7,10 @@ class Brief {
     this.w = 35;
     this.h = 35;
     this.x = 75;
-    this.y = 300 + Math.random() * 50; 
+    this.y = 300 + Math.random() * 50;
 
-    this.marginTop = 300; 
-    this.marginBottom = 400; 
+    this.marginTop = 300;
+    this.marginBottom = 400;
 
     this.node.style.width = `${this.w}px`;
     this.node.style.height = `${this.h}px`;
